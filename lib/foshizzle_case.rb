@@ -1,14 +1,19 @@
 class String
   define_method(:foshizzle) do
-    split_sentence = self.split("")
+    split_sentence = self.split(" ")
     foshizzle_sentence = []
-    split_sentence.each do |letter|
-      if letter.eql?("s")
-        foshizzle_sentence.push("z")
-      else
-        foshizzle_sentence.push(letter)
+    split_sentence.each do |word|
+      foshizzle_word = []
+      word.split("").each_with_index do |letter, index|
+        if letter.eql?("s") &&  index != 0
+          foshizzle_word.push("z")
+        else
+          foshizzle_word.push(letter)
+        end
       end
+      end_word = foshizzle_word.join("")
+      foshizzle_sentence.push(end_word)
     end
-    foshizzle_sentence.join("")
+    foshizzle_sentence.join(" ")
   end
 end
